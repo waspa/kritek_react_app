@@ -1,0 +1,22 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "first_name": "Patrick",
+      "last_name": "Wasajja",
+      "email": "wasajjaint@gmail.com"
+    },
+    {
+      "first_name": "Steve",
+      "last_name": "Worziniak",
+      "email": "steve@gmail.com",
+      "id": 2
+    },
+    {
+      "first_name": "Xani",
+      "last_name": "Lopez",
+      "email": "xanilopez@gmail.com",
+      "id": 4
+    }
+  ]
+}
