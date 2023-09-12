@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import Spinner from "../../components/Spinner";
 import { fetchStudents } from "../../services/students/slice";
 import { useNavigate } from "react-router-dom";
+import { StudentState } from "../../utils/types";
 
 const ButtonActions = ({ id }: { id: number }) => {
 	const navigate = useNavigate();
@@ -37,7 +38,9 @@ const ButtonActions = ({ id }: { id: number }) => {
 
 const TabularComponent = () => {
 	const dispatch = useAppDispatch();
-	const { fetchStudentsState } = useAppSelector((state) => state.student);
+	const { fetchStudentsState } = useAppSelector(
+		(state: { student: StudentState }) => state.student,
+	);
 	const { students, isloading, errors } = fetchStudentsState;
 
 	React.useEffect(() => {

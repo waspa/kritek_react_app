@@ -10,7 +10,7 @@ import {
 } from "../../services/students/slice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import Spinner from "../../components/Spinner";
-import { IStudentCreateUpdate } from "../../utils/types";
+import { IStudentCreateUpdate, StudentState } from "../../utils/types";
 
 const UpdateContainer = () => {
 	const [first_name, setFirstName] = useState<string | null>(null);
@@ -22,7 +22,7 @@ const UpdateContainer = () => {
 	const location = useLocation();
 
 	const { fetchStudentState, editStudentState } = useAppSelector(
-		(state) => state.student,
+		(state: { student: StudentState }) => state.student,
 	);
 	const { isloading, errors, student } = fetchStudentState;
 

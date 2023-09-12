@@ -9,7 +9,7 @@ import {
 } from "../../services/students/slice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import Spinner from "../../components/Spinner";
-import { IStudentCreateUpdate } from "../../utils/types";
+import { IStudentCreateUpdate, StudentState } from "../../utils/types";
 
 const CreateContainer = () => {
 	const [first_name, setFirstName] = useState<string | null>(null);
@@ -19,7 +19,9 @@ const CreateContainer = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const { createStudentState } = useAppSelector((state) => state.student);
+	const { createStudentState } = useAppSelector(
+		(state: { student: StudentState }) => state.student,
+	);
 	const { isloading, errors } = createStudentState;
 
 	const handleCreate = () => {

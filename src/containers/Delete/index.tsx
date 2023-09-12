@@ -10,6 +10,7 @@ import {
 } from "../../services/students/slice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import Spinner from "../../components/Spinner";
+import { StudentState } from "../../utils/types";
 
 const DeleteContainer = () => {
 	const [first_name, setFirstName] = useState<string | null>(null);
@@ -21,7 +22,7 @@ const DeleteContainer = () => {
 	const location = useLocation();
 
 	const { fetchStudentState, deleteStudentState } = useAppSelector(
-		(state) => state.student,
+		(state: { student: StudentState }) => state.student,
 	);
 	const { isloading, errors, student } = fetchStudentState;
 
@@ -78,12 +79,18 @@ const DeleteContainer = () => {
 							id="outlined-error"
 							label="First Name"
 							value={first_name}
+							InputProps={{
+								readOnly: true,
+							}}
 							onChange={(e) => setFirstName(e.target.value)}
 						/>
 						<TextField
 							id="outlined-error-helper-text"
 							label="Last Name"
 							value={last_name}
+							InputProps={{
+								readOnly: true,
+							}}
 							onChange={(e) => setLastName(e.target.value)}
 						/>
 					</div>
@@ -92,6 +99,9 @@ const DeleteContainer = () => {
 							label="Email"
 							variant="filled"
 							value={email}
+							InputProps={{
+								readOnly: true,
+							}}
 							onChange={(e) => setEmail(e.target.value)}
 						/>
 					</div>
